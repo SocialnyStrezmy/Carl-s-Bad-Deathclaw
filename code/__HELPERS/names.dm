@@ -47,14 +47,14 @@ GLOBAL_VAR(command_name)
 
 /proc/set_station_name(newname)
 	GLOB.station_name = newname
-
+//Mournefire Edit - Naming
 #ifdef ROGUEWORLD
-	world.name = "RATWOOD"
+	world.name = "Mournefire Pass"
 #else
-	world.name = "RATWOOD"
+	world.name = "Mournefire Pass"
 #endif
 #ifdef TESTSERVER
-	world.name = "RATWOOD (TESTING)"
+	world.name = "Mournefire Pass (TESTING)"
 #endif
 
 
