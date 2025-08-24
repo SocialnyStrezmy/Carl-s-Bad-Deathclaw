@@ -1,4 +1,4 @@
 <!-- Most valid html will work in here, excluding images. -->
-Roguetown Discord Server: <a href="https://discord.gg/9uYTPsRMKa">discord.gg/RogueTown</a>
-Roguetown Patreon: <a href="https://www.patreon.com/user?u=58204426">patreon.com/ROGUETOWN</a>
-<center>* Unstable Playtest - Expect Restarts *</center>
+Placeholder Discord: <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">discord.gg/Placeholder</a>
+Placeholder Patreon: <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">patreon.com/Placeholder</a>
+<center>* Playtest Server - Expect Restarts *</center>
