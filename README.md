@@ -30,8 +30,6 @@ All original code and assets of this repository are under the [GNU AGPL v3.0](ht
 
 Per our commitment to open sourced assets we have removed Infrared Baron's licensed assets. Any additional assets used by Mournefire Pass will fall under GNU AGPL v3.0
 
-## Mournefire Pass - Open Source
-
 ## TG Station
 
 All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
