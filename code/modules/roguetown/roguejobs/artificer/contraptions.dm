@@ -393,7 +393,7 @@
 	sneaky_misfire_chance = 20
 	charge_per_source = 2
 	cog_accept = FALSE
-	var/list/allowed_locks = list(/obj/structure/mineral_door, /obj/structure/closet, /obj/structure/roguemachine/steward, /obj/structure/roguemachine/vendor, /obj/structure/roguemachine/merchantvend)
+	var/list/allowed_locks = list(/obj/structure/mineral_door, /obj/structure/closet, /obj/structure/roguemachine/vendor, /obj/structure/roguemachine/merchantvend)
 	var/stored_lock_id = "artificer"
 	var/stored_lock_hash = 354
 	var/mode = "Examiner"

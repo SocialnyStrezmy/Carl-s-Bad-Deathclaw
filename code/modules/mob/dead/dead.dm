@@ -81,26 +81,6 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 			continue
 		var/readiedas = 0
 		var/list/PL = list()
-		for(var/mob/dead/new_player/player in GLOB.player_list)
-			if(!player)
-				continue
-			if(player.client.prefs.job_preferences[job.title] == JP_HIGH)
-				if(player.ready == PLAYER_READY_TO_PLAY)
-					readiedas++
-					if(!(player.client.ckey in GLOB.hiderole))
-						if(player.client.prefs.real_name)
-							var/thing = "[player.client.prefs.real_name]"
-							if(istype(job, /datum/job/roguetown/hand))
-								if(player != src)
-									if(client.prefs.job_preferences["Duke"] == JP_HIGH)
-										thing = "<a href='byond://?src=[REF(src)];sethand=[player.client.ckey]'>[player.client.prefs.real_name]</a>"
-								for(var/mob/dead/new_player/lord in GLOB.player_list)
-									if(lord.client.prefs.job_preferences["Duke"] == JP_HIGH)
-										if(lord.brohand == player.ckey)
-											thing = "*[thing]*"
-											break
-							PL += thing
-
 		var/list/PL2 = list()
 		for(var/i in 1 to PL.len)
 			if(i == PL.len)

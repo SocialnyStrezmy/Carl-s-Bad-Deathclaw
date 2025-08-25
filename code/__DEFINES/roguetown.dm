@@ -22,33 +22,35 @@
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
 )
-
+#define RACES_LOCAL \
+	/datum/species/human/northern
+	
 #define RACES_RESPECTED \
 	/datum/species/human/northern,\
-	/datum/species/elf/wood,\
-	/datum/species/human/halfelf,\
-	/datum/species/dwarf/mountain,\
+	/datum/species/elf/dark,\
 	/datum/species/aasimar,\
-	/datum/species/vulpkanin,\
-	/datum/species/moth,\
-	/datum/species/dracon,
 
 #define RACES_TOLERATED \
+	/datum/species/elf/wood,\
+	/datum/species/human/halfelf,\
 	/datum/species/lizardfolk,\
+	/datum/species/demihuman,\
+	/datum/species/dwarf/mountain,\
+	/datum/species/dracon,
+
+#define RACES_SHUNNED \
+	/datum/species/tieberian,\
+	/datum/species/vulpkanin,\
 	/datum/species/tabaxi,\
 	/datum/species/lupian,\
 	/datum/species/axian,\
 	/datum/species/anthromorph,\
-	/datum/species/demihuman
-
-#define RACES_SHUNNED \
-	/datum/species/elf/dark,\
-	/datum/species/tieberian,\
-	/datum/species/anthromorphsmall,\
-	/datum/species/kobold
 
 #define RACES_VERY_SHUNNED \
-	/datum/species/halforc
+	/datum/species/halforc, \
+	/datum/species/kobold, \
+	/datum/species/moth,\
+	/datum/species/anthromorphsmall,\
 
 #define RACES_GOBLIN \
 	/datum/species/goblinp

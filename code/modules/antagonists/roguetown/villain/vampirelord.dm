@@ -172,9 +172,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		/datum/subclass/miner,
 		/datum/subclass/healer,
 		/datum/subclass/woodcutter,
-		/datum/subclass/blacksmith,
-		/datum/subclass/vampirerogue,
-		/datum/subclass/vampiremagos)
+		/datum/subclass/blacksmith)
 	var/list/visoptions = list()
 
 	for(var/datum/subclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])

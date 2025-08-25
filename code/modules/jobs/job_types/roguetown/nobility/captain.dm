@@ -18,7 +18,6 @@
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
 
-	spells = list(SPELL_CONVERT_ROLE_GUARD)
 	outfit = /datum/outfit/job/roguetown/captain
 
 	give_bank_account = 26
@@ -170,18 +169,3 @@
 	if(new_role)
 		recruit.job = new_role
 	return TRUE
-
-/obj/effect/proc_holder/spell/self/convertrole/guard
-	name = "Recruit Guardsmen"
-	new_role = "Watchman"
-	overlay_state = "recruit_guard"
-	recruitment_faction = "Watchman"
-	recruitment_message = "Serve the town guard, %RECRUIT!"
-	accept_message = "FOR THE DUCHY!"
-	refuse_message = "I refuse."
-
-/obj/effect/proc_holder/spell/self/convertrole/guard/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
-	. = ..()
-	if(!.)
-		return
-	recruit.verbs |= /mob/proc/haltyell

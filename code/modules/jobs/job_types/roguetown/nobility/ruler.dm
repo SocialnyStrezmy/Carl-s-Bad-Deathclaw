@@ -2,41 +2,17 @@ GLOBAL_VAR(lordsurname)
 GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/job/roguetown/ruler
-	title = "Duke"
-	f_title = "Duchess"
+	title = "Anax"
 	flag = RULER
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = JCOLOR_NOBLE
-	allowed_races = RACES_TOLERATED_UP
-	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_LOCAL
+	allowed_sexes = list(MALE)
 	can_leave_round = FALSE
-	allowed_patrons = list(\
-	/datum/patron/divine/astrata,\
-	/datum/patron/divine/noc,\
-	/datum/patron/divine/dendor,\
-	/datum/patron/divine/abyssor,\
-	/datum/patron/divine/ravox,\
-	/datum/patron/divine/necra,\
-	/datum/patron/divine/xylix,\
-	/datum/patron/divine/pestra,\
-	/datum/patron/divine/malum,\
-	/datum/patron/divine/eora,\
-	/datum/patron/zizo,\
-	/datum/patron/inhumen/matthios,\
-	/datum/patron/inhumen/baotha,\
-	/datum/patron/inhumen/graggar\
-) //combining defines into a list like this didn't work for some raisin so...
-
-	spells = list(
-		SPELL_GRANT_TITLE,
-		SPELL_GRANT_NOBILITY,
-		SPELL_CONVERT_ROLE_SERVANT,
-		SPELL_CONVERT_ROLE_GUARD,
-		SPELL_CONVERT_ROLE_BOG,
-	)
+	allowed_patrons = /datum/patron/psydon
 	outfit = /datum/outfit/job/roguetown/lord
 	visuals_only_outfit = /datum/outfit/job/roguetown/lord/visuals
 
@@ -71,10 +47,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.rulermob = L
 		if(L.gender != FEMALE)
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Duke of Rockhill.</span></span></b>")
-			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
-		else
-			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Duchess of Rockhill.</span></span></b>")
+			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Anax of Mournefire Pass, glory to the Zybantine Emperor!.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 		var/mob/living/carbon/human/H = L
 		var/index = findtext(H.real_name, " ")
@@ -104,7 +77,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		id = /obj/item/clothing/ring/active/nomag	
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/duke
 		shoes = /obj/item/clothing/shoes/roguetown/armor
 		
 		if(H.mind)
@@ -148,11 +120,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	else
 		head = /obj/item/clothing/head/roguetown/crown/serpcrown
 		l_hand = /obj/item/rogueweapon/lordscepter
-	//	r_hand = /obj/item/clothing/head/roguetown/duchess_hood Test
 		beltl = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		backl = /obj/item/clothing/suit/roguetown/armor/leather/duchess
 		gloves = /obj/item/clothing/gloves/roguetown/leather/black
 
 		id = /obj/item/clothing/ring/active/nomag

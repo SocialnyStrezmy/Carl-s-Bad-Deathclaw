@@ -17,13 +17,6 @@
 	character.change_stat("perception", 2)
 	ADD_TRAIT(character, TRAIT_BREADY, "[type]")
 
-
-/datum/special_trait/curseofcain
-	name = "Flawed Immortality"
-	greet_text = span_notice("I've never needed to eat, drink or even breathe... In fact the stench of death does not bother me.")
-	restricted_jobs = list(INQUISITION_ROLES)
-	weight = 80
-
 /datum/special_trait/curseofcain/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(character, TRAIT_NOBREATH, "[type]")
@@ -103,7 +96,7 @@
 	req_text = "Be a town role and old."
 	weight = 10
 	allowed_ages = list(AGE_OLD)
-	allowed_jobs = list(/datum/job/roguetown/towner, YEOMEN_ROLES , /datum/job/roguetown/nightmaiden, /datum/job/roguetown/butcher, /datum/job/roguetown/cook, /datum/job/roguetown/nightman, /datum/job/roguetown/farmer, /datum/job/roguetown/shophand)
+	allowed_jobs = list(/datum/job/roguetown/towner, /datum/job/roguetown/butcher, /datum/job/roguetown/cook, /datum/job/roguetown/farmer)
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
@@ -171,7 +164,6 @@
 	name = "Freerunner"
 	greet_text = span_notice("I've always had a knack for being fast, my legs work better than most and I have lept onto and off buildings with no difficulty.")
 	req_text = "Adult or Middle-Aged, Non-keep role."
-	restricted_jobs = list(KING_QUEEN_ROLES, GARRISON_ROLES, MANOR_ROLES)
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	weight = 10
 
@@ -289,14 +281,6 @@
 	character.transform = character.transform.Translate(0, (0.25 * 16))
 	character.update_transform()
 
-
-/datum/special_trait/atheism
-	name = "Atheist"
-	greet_text = span_notice("I've lost all faith.")
-	req_text = "Non-Church Role"
-	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
-	weight = 100
-
 /datum/special_trait/atheism/on_apply(mob/living/carbon/human/character, silent)
 	character.set_patron(/datum/patron/godless)
 
@@ -310,62 +294,6 @@
 	character.change_stat("speed", -2)
 	character.change_stat("intelligence", -4)
 
-/datum/special_trait/heretic
-	name = "Known Heretic"
-	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
-	req_text = "Non-Church role"
-	weight = 100
-	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
-
-/datum/special_trait/heretic/on_apply(mob/living/carbon/human/character, silent)
-	GLOB.excommunicated_players += character.real_name
-	character.add_stress(/datum/stressevent/psycurse)
-	character.devotion?.excommunicate()
-	ADD_TRAIT(character, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
-
-/datum/special_trait/hunted
-	name = "Hunted"
-	greet_text = span_boldwarning("Someone put a bounty on my head!")
-	weight = 100
-
-/datum/special_trait/hunted/on_apply(mob/living/carbon/human/character, silent)
-	var/reason = ""
-	var/employer = "unknown employer"
-	var/employer_gender
-	if(prob(65))
-		employer_gender = MALE
-	else
-		employer_gender = FEMALE
-	if(employer_gender == MALE)
-		employer = pick(list("Baron", "Lord", "Nobleman", "Heir"))
-	else
-		employer = pick(list("Duchess", "Lady", "Noblelady", "Heiress"))
-	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
-	var/amount = rand(40,100)
-	switch(rand(1,7))
-		if(1)
-			reason = "Murder"
-		if(2)
-			reason = "Kinslaying"
-		if(3)
-			reason = "Besmirching a Noble's name"
-		if(4)
-			reason = "Treason"
-		if(5)
-			reason = "Arson"
-		if(6)
-			reason = "Heresy"
-		if(7)
-			reason = "Robbing a Noble"
-	add_bounty(character.real_name, amount, FALSE, reason, employer)
-	if(!silent)
-		to_chat(character, span_notice("Whether I've done it or not, I have been accused of [reason] and the [employer] put a bounty on my head!"))
-
-/datum/special_trait/heretic/on_apply(mob/living/carbon/human/character, silent)
-	GLOB.excommunicated_players += character.real_name
-	character.add_stress(/datum/stressevent/psycurse)
-	character.devotion?.excommunicate()
-
 /datum/special_trait/outlaw
 	name = "Known Outlaw"
 	greet_text = span_boldwarning("Whether for crimes I've done or was accused of, I have been declared an outlaw!")
@@ -374,7 +302,6 @@
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)
 
-
 /datum/special_trait/unlucky
 	name = "Unlucky"
 	greet_text = span_boldwarning("Ever since I knocked over that glass vase, I just feel... off.")
@@ -382,16 +309,6 @@
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC -= rand(1, 10)
-
-
-/datum/special_trait/jesterphobia
-	name = "Jesterphobic"
-	greet_text = span_boldwarning("I have a severe, irrational fear of Jesters!")
-	weight = 80
-
-/datum/special_trait/jesterphobia/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_JESTERPHOBIA, "[type]")
-
 
 /datum/special_trait/wild_night
 	name = "Wild Night"
@@ -460,14 +377,6 @@
 	ring.desc = "The name of [character.real_name] can be seen engraved on ring's inner side."
 	character.put_in_hands(ring, forced = TRUE)
 
-
-/datum/special_trait/reps_redemption
-	name = "Reps for Redemption"
-	greet_text = span_notice("Pain has finally transformed into gain.")
-	req_text = "Be a Church Role"
-	allowed_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
-	weight = 60
-
 /datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
@@ -479,24 +388,11 @@
 /datum/special_trait/seed_feed
 	name = "Seed & Feed"
 	greet_text = span_notice("Armed with seeds and the unwavering belief that sharing is mandatory. Bag safely stashed, until the next seed-worthy moment arises.")
-	req_text = "Be a Druid, Soilson, Towner or Refugee."
-	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/towner, /datum/job/roguetown/druid)
+	req_text = "Soilson, Towner or Refugee."
+	allowed_jobs = list(/datum/job/roguetown/farmer, /datum/job/roguetown/refugee, /datum/job/roguetown/towner)
 	weight = 100
 
 /datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	character.mind.special_items["The Bag"] = /obj/item/storage/roguebag/seedfeed
 	character.mind.special_items["The Sickle"] = /obj/item/rogueweapon/sickle
-
-
-/datum/special_trait/runic_faith
-	name = "Runic Faith"
-	greet_text = span_notice("I keep two runelocks on me at all times. Sadly I forgot to load them today.")
-	req_text = "Be a Priest or Priestess"
-	allowed_jobs = list(/datum/job/roguetown/priest)
-	weight = 10
-
-/datum/special_trait/runic_faith/on_apply(mob/living/carbon/human/character, silent)
-	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
-	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_R)
-	character.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)

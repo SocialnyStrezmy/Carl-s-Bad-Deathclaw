@@ -49,49 +49,6 @@
 	src.add_mob_blood(C)
 	SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "dismembered", /datum/mood_event/dismembered)
 	C.add_stress(/datum/stressevent/dismembered)
-	var/stress2give = /datum/stressevent/viewdismember
-	var/guillotine_execution = FALSE
-
-	if(C)
-		if(C.buckled)
-			if(istype(C.buckled, /obj/structure/guillotine))
-				guillotine_execution = TRUE
-			if(istype(C.buckled, /obj/structure/fluff/psycross))
-				if(C.real_name in GLOB.excommunicated_players)
-					stress2give = /datum/stressevent/viewsinpunish
-	if(stress2give)
-		for(var/mob/living/carbon/CA in hearers(world.view, C))
-			if(CA != C && !HAS_TRAIT(CA, TRAIT_BLIND) && !guillotine_execution)
-				if(stress2give == /datum/stressevent/viewdismember)
-					if(HAS_TRAIT(CA, TRAIT_STEELHEARTED))
-						continue
-					if(CA.gender == FEMALE)
-						CA.add_stress(/datum/stressevent/fviewdismember)
-						continue
-				CA.add_stress(stress2give)
-	if(grabbedby)
-		QDEL_LIST(grabbedby)
-
-	drop_limb()
-	if(dam_type == BURN)
-		burn()
-		return TRUE
-
-	var/turf/location = C.loc
-	if(istype(location))
-		C.add_splatter_floor(location)
-	var/direction = pick(GLOB.cardinals)
-	var/t_range = rand(2,max(throw_range/2, 2))
-	var/turf/target_turf = get_turf(src)
-	for(var/i in 1 to t_range-1)
-		var/turf/new_turf = get_step(target_turf, direction)
-		if(!new_turf)
-			break
-		target_turf = new_turf
-		if(new_turf.density)
-			break
-	throw_at(target_turf, throw_range, throw_speed)
-	return TRUE
 
 /obj/item/bodypart/chest/dismember(dam_type = BRUTE, bclass = BCLASS_CUT, mob/living/user, zone_precise = src.body_zone)
 	if(!owner)
