@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	else
 		head = /obj/item/clothing/head/roguetown/crown/serpcrown
 		l_hand = /obj/item/rogueweapon/lordscepter
-		r_hand = /obj/item/clothing/head/roguetown/duchess_hood
+	//	r_hand = /obj/item/clothing/head/roguetown/duchess_hood Test
 		beltl = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady

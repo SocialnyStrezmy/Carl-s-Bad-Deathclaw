@@ -1331,16 +1331,6 @@
 		for(var/obj/item/I in things)
 			STR.remove_from_storage(I, get_turf(src))
 
-//----------------- INFAREDBARON/CLOAKS.DM ---------------------
-
-/obj/item/clothing/cloak/citywatch
-	name = "citywatch cape"
-	desc = ""
-	icon = 'icons/roguetown/clothing/licensed-infraredbaron/cloaks.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/licensed-infraredbaron/onmob/cloaks.dmi'
-	icon_state = "citywatch_cape"
-	item_state = "citywatch_cape"
-
 //----------------- MORE AZURE SPRITEWORK ---------------------
 
 /obj/item/clothing/cloak/hierophant
